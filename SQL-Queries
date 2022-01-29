@@ -1,0 +1,26 @@
+print'High risk because H1'
+select account key from customer_account_info right join customer_transactions on customer_account_info.account_key=customer_account_info.account_key
+where (sum(transactions  GroupByaccount_key))>1000;
+
+print'High risk because H1;
+select account key from customer_account_info right join customer_transactions on customer_account_info.account_key=customer_account_info.account_key
+where groupBy Account_key(count(inn)+count(out))>20;
+
+print 'MEDIUM RISK because M2';
+select account key from customer_account_info right join customer_transactions on customer_account_info.account_key=customer_account_info.account_key
+where (sum(transactions  GroupByaccount_key))>600 and (sum(transactions  GroupByaccount_key))<1000 ;
+
+print 'MEDIUM Risk beacuse M2';
+select account key from customer_account_info right join customer_transactions on customer_account_info.account_key=customer_account_info.account_key
+where groupBy Account_key(count(inn)+count(out))>6;
+
+print LOW RISK because of L2;
+
+select account key from customer_account_info left join customer_transactions on customer_account_info.account_key=customer_account_info.account_key
+where groupBy Account_key(count(INN))<500;
+
+select account key from customer_account infor left join customer_transactions on customer_account_info.account_key=customer_account_info.account_key
+where groupBy Account_key(count(OUT))>600;
+ 
+
+
